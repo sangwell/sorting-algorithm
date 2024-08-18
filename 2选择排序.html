@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function selectSort(nums) {
+        const len = nums.length;
+        for (let i = 0; i < len; i++) {
+            for (let j = i + 1; j < len; j++) {
+                if (nums[i] >= nums[j]) {
+                    [nums[i], nums[j]] = [nums[j], nums[i]];
+                }
+            }
+        }
+        return nums;
+    }
+
+    const result = selectSort([1, 9, 6, 3, 1, 2, 6, 5]);
+    // const result = selectSort([5, 4, 3, 2, 1]);
+
+    console.log(result);
+</script>
+
+</body>
+</html>
