@@ -7,6 +7,40 @@
 <body>
 
 <script>
+
+    function selectSort(arr)  {
+        const len = arr.length;
+        let minIndex;
+        for(let i = 0; i < len - 1; i++) {
+            minIndex = i;
+            for(let j = i; j < len; j++) {
+                if(arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            if(minIndex !== i) {
+                [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+            }
+        }
+        return arr;
+    }
+
+    function insertSort(arr) {
+        const len = arr.length;
+        for (let i = 1; i < len; i++) {
+            const curr = arr[i];
+            let j = i - 1;
+            while (j >= 0 && arr[j] > curr) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = curr;
+        }
+        return arr;
+    }
+
+    console.log(insertSort([5, 4, 3, 2, 1]))
+
     // 有一个有序数组nums和一个数n，将n插入到nums中，是的nums是一个有序数组
 
     /*function insert(nums, n) {
