@@ -10,7 +10,45 @@
 
     console.log(mergeSort([5, 4, 3, 2, 1]));
 
-    function mergeSort(arr) {
+    function mergeSort(nums) {
+        const len = nums.length;
+        if (len <= 1) {
+            return nums;
+        }
+        const mid = Math.floor(len / 2);
+        const left = mergeSort(nums.slice(0, mid));
+        const right = mergeSort(nums.slice(mid, len));
+        nums = concatArr(left, right);
+        return nums;
+    }
+
+    function concatArr(arr1, arr2) {
+        let i = 0, j = 0;
+        const arr1Len = arr1.length;
+        const arr2Len = arr2.length;
+        const res = [];
+        while (i < arr1Len && j < arr2Len) {
+            if (arr1[i] > arr2[j]) {
+                res.push(arr2[j]);
+                j++;
+            } else {
+                res.push(arr1[i]);
+                i++;
+            }
+        }
+        while (i < arr1Len) {
+            res.push(arr1[i]);
+            i++;
+        }
+        while (j < arr2Len) {
+            res.push(arr2[j]);
+            j++;
+        }
+        return res;
+    }
+
+
+    /*function mergeSort(arr) {
         const len = arr.length;
         if (len <= 1) {
             return arr;
@@ -41,7 +79,7 @@
         } else {
             return res.concat(arr2.slice(j))
         }
-    }
+    }*/
 </script>
 
 </body>
