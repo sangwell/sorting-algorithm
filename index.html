@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 冒泡排序
+    function bubbleSort(nums) {
+        for (let i = 0; i < nums.length; i++) {
+            for (let j = 0; j < nums.length - 1 - i; j++) {
+                if (nums[j] > nums[j + 1]) {
+                    [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]];
+                }
+            }
+        }
+        return nums;
+    }
+
+    // console.log(bubbleSort([5,4,3,2,1]));
+
+    // 选择排序
+    function selectSort(nums) {
+        for (let i = 0; i < nums.length; i++) {
+            for (let j = i + 1; j < nums.length; j++) {
+                if (nums[i] > nums[j]) {
+                    [nums[i], nums[j]] = [nums[j], nums[i]];
+                }
+            }
+        }
+        return nums;
+    }
+
+    // console.log(selectSort([5, 4, 3, 2, 1]));
+
+    // 插入排序
+    function insertSort(nums) {
+        for (let i = 1; i < nums.length; i++) {
+            const curr = nums[i];
+            let j = i - 1;
+            while (j >= 0 && nums[j] > curr) {
+                nums[j + 1] = nums[j];
+                j--;
+            }
+            nums[j + 1] = curr;
+        }
+        return nums;
+    }
+
+    // console.log(insertSort([5, 4, 3, 2, 1]));
+
+    // 归并排序
+    function mergeSort(nums) {
+        const len = nums.length;
+        if (len <= 1) {
+            return nums;
+        }
+        const mid = Math.floor(len / 2);
+        const left = mergeSort(nums.slice(0, mid));
+        const right = mergeSort(nums.slice(mid, len));
+        return concatArr(left, right);
+    }
+
+    function concatArr(arr1, arr2) {
+        let i = 0, j = 0;
+        const len1 = arr1.length;
+        const len2 = arr2.length;
+        const res = [];
+        while (i < len1 && j < len2) {
+            if (arr1[i] > arr2[j]) {
+                res.push(arr2[j]);
+                j++;
+            } else {
+                res.push(arr1[i]);
+                i++;
+            }
+        }
+        while (i < len1) {
+            res.push(arr1[i]);
+            i++;
+        }
+        while (j < len2) {
+            res.push(arr2[j]);
+            j++;
+        }
+        return res;
+    }
+
+    // console.log(mergeSort([5, 4, 3, 2, 1]));
+</script>
+
+</body>
+</html>
