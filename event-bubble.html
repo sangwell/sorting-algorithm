@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div onclick="console.log('first div')">
+    <div onclick="console.log('second div')">
+        <button onclick="btnClick(event)">
+            Click!
+        </button>
+    </div>
+</div>
+
+<script>
+    function btnClick($event) {
+        console.log('button');
+        $event.stopPropagation();
+    }
+
+    function sayHi() {
+        return (() => 0)()
+    }
+
+    // console.log(typeof sayHi());
+
+    console.log([1, 2, 3].map(num => {
+        if (typeof num === "number") return;
+        return num * 2;
+    }));
+</script>
+
+
+</body>
+</html>
