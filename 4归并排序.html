@@ -24,10 +24,10 @@
 
     function concatArr(arr1, arr2) {
         let i = 0, j = 0;
-        const arr1Len = arr1.length;
-        const arr2Len = arr2.length;
+        const len1 = arr1.length;
+        const len2 = arr2.length;
         const res = [];
-        while (i < arr1Len && j < arr2Len) {
+        while (i < len1 && j < len2) {
             if (arr1[i] > arr2[j]) {
                 res.push(arr2[j]);
                 j++;
@@ -36,50 +36,17 @@
                 i++;
             }
         }
-        while (i < arr1Len) {
+        while (i < len1) {
             res.push(arr1[i]);
             i++;
         }
-        while (j < arr2Len) {
+        while (j < len2) {
             res.push(arr2[j]);
             j++;
         }
         return res;
     }
 
-
-    /*function mergeSort(arr) {
-        const len = arr.length;
-        if (len <= 1) {
-            return arr;
-        }
-        const mid = Math.floor(len / 2);
-        const leftArr = mergeSort(arr.slice(0, mid));
-        const rightArr = mergeSort(arr.slice(mid, len));
-        arr = concatArr(leftArr, rightArr);
-        return arr;
-    }
-
-    function concatArr(arr1, arr2) {
-        let i = 0, j = 0;
-        const res = [];
-        const len1 = arr1.length;
-        const len2 = arr2.length;
-        while (i < len1 && j < len2) {
-            if (arr1[i] < arr2[j]) {
-                res.push(arr1[i]);
-                i++;
-            } else {
-                res.push(arr2[j]);
-                j++;
-            }
-        }
-        if (i < len1) {
-            return res.concat(arr1.slice(i))
-        } else {
-            return res.concat(arr2.slice(j))
-        }
-    }*/
 </script>
 
 </body>
