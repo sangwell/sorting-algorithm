@@ -7,7 +7,7 @@
 <body>
 
 <style>
-    .box{
+    .box {
         width: 200px;
         height: 200px;
         border: 1px solid #000;
@@ -22,62 +22,20 @@
 
 <script>
 
-    console.log(quickSort([5, 4, 3, 2, 1]));
 
-    // 快速排序入口
-    function quickSort(arr, left = 0, right = arr.length - 1) {
-        if (arr.length > 1) {
-            // lineIndex表示下一次划分左右子数组的索引位
-            const lineIndex = partition(arr, left, right)
-            // 如果左边子数组的长度不小于1，则递归快排这个子数组
-            if (left < lineIndex - 1) {
-                // 左子数组以 lineIndex-1 为右边界
-                quickSort(arr, left, lineIndex - 1)
-            }
-            // 如果右边子数组的长度不小于1，则递归快排这个子数组
-            if (lineIndex < right) {
-                // 右子数组以 lineIndex 为左边界
-                quickSort(arr, lineIndex, right)
-            }
-        }
-        return arr
-    }
-
-    // 以基准值为轴心，划分左右子数组的过程
-    function partition(arr, left, right) {
-        let pivotValue = arr[Math.floor((left + right) / 2)];
-        let i = left;
-        let j = right;
-        // 当左右指针不越界时，循环执行以下逻辑
-        while (i <= j) {
-            // 左指针所指元素若小于基准值，则右移左指针
-            while (arr[i] < pivotValue) {
-                i++
-            }
-            // 右指针所指元素大于基准值，则左移右指针
-            while (arr[j] > pivotValue) {
-                j--
-            }
-
-            // 若i<=j，则意味着基准值左边存在较大元素或右边存在较小元素，交换两个元素确保左右两侧有序
-            if (i <= j) {
-                swap(arr, i, j)
-                i++
-                j--
-            }
+    function testSort(arr, left = 0, right = arr.length - 1) {
+        if (left < right) {
 
         }
-        // 返回左指针索引作为下一次划分左右子数组的依据
-        return i
+        return arr;
     }
 
-    // 快速排序中使用 swap 的地方比较多，我们提取成一个独立的函数
-    function swap(arr, i, j) {
-        [arr[i], arr[j]] = [arr[j], arr[i]]
-    }
+    // console.log(testSort([5, 1, 4, 3, 2],))
+
+    // console.log(quickSort([5, 4, 3, 2, 1]));
 
 
-    /*function quickSort(arr, low = 0, high = arr.length - 1) {
+    function quickSort(arr, low = 0, high = arr.length - 1) {
         if (low < high) {
             // 执行分区操作，返回基准值索引
             const pivotIndex = partition(arr, low, high);
@@ -89,23 +47,17 @@
 
     // 用于分区的函数，它选择最后一个元素作为基准值
     function partition(arr, low, high) {
-        // 基准值
         const pivot = arr[high];
-        let i = low; // `i`用来记录比基准小的区域的最后一个元素的索引
-
+        let i = low;
         for (let j = low; j < high; j++) {
-            // 如果当前元素小于或等于基准值
             if (arr[j] <= pivot) {
                 [arr[i], arr[j]] = [arr[j], arr[i]];
                 i++;
             }
         }
-
-        // 交换基准值到它最终的位置
-        // console.log(i, high);
         [arr[i], arr[high]] = [arr[high], arr[i]];
-        return i; // 返回基准值的索引
-    }*/
+        return i;
+    }
 
 
 </script>
